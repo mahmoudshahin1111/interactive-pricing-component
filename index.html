@@ -45,7 +45,10 @@
           <div class="cl-options">
             <span class="cl-monthly-billing-option">
               <span class="cl-text">Monthly Billing</span>
-              <input class="cl-input-group" type="checkbox" />
+              <span class="cl-checkbox">
+                <span class="cl-btn"></span>
+                <input type="text" />
+              </span>
             </span>
             <span class="cl-monthly-billing-option">
               <span class="cl-text">Yearly Billing</span>
@@ -88,9 +91,6 @@
         // mouse tracking variables
         let holding = false;
         // update holding
-        slider.mouseleave(function (e) {
-          holding = false;
-        });
         sliderBtn.mousedown(function (e) {
           holding = true;
         });
@@ -102,17 +102,18 @@
         sliderContent.mousemove(function (e) {
           const mouseX =
             e.pageX - $(e.currentTarget).offset().left - sliderBtn.width() / 2;
-          update(mouseX);
+          if (holding) {
+            update(mouseX);
+          }
         });
         // move track to new position when clicked on.
-        sliderTrack.click(function (e) {
+        sliderContent.click(function (e) {
           const mouseX =
             e.pageX - $(e.currentTarget).offset().left - sliderBtn.width() / 2;
           update(mouseX);
         });
         function update(mouseX) {
           if (
-            holding &&
             mouseX > -(sliderBtn.width() / 2) &&
             mouseX < sliderContent.width() - sliderBtn.width() / 2
           ) {
@@ -131,6 +132,18 @@
       initSlider(100, 200, (result) => {
         console.log(result);
         $("#price").text("$" + result + ".00");
+      });
+
+      //
+
+      $(".cl-checkbox").click(function (e) {
+        $(e.currentTarget).toggleClass('active');
+        const inputEl = $(e.currentTarget).find("input[type=checkbox]");
+        if (inputEl.attr("checked")) {
+          inputEl.attr("checked", false);
+        } else {
+          inputEl.attr("checked", true);
+        }
       });
     </script>
   </body>
