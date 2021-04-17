@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+    <title>Frontend Mentor | Interactive pricing component #CodexLine</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="cl-page">
+      <span class="cl-bg"></span>
+      <div class="cl-header">
+        <span class="cl-header-bg-pattern"></span>
+        <span class="cl-header-text">
+          <h1 class="cl-head">Simple, traffic-based pricing</h1>
+          <span class="cl-sub-header">
+            Sign-up for out 30-day trail.<br />
+            no credit card required.
+          </span>
+        </span>
+      </div>
+      <div class="cl-card">
+        <div class="cl-body">
+          <div class="cl-pageviews">100k pageviews</div>
+          <div class="cl-slider">
+            <div class="cl-content">
+              <span class="cl-track">
+                <span class="cl-fill-track"></span>
+                <span class="cl-slider-btn"></span>
+              </span>
+            </div>
+          </div>
+          <div class="cl-price">
+            <span id="price" class="cl-value"> $16.00</span>
+            <span class="cl-unit">/ month</span>
+          </div>
+          <div class="cl-options">
+            <span class="cl-monthly-billing-option">
+              <span class="cl-text">Monthly Billing</span>
+              <input class="cl-input-group" type="checkbox" />
+            </span>
+            <span class="cl-monthly-billing-option">
+              <span class="cl-text">Yearly Billing</span>
+              <span class="cl-percentage">-25%</span>
+            </span>
+          </div>
+        </div>
+        <div class="cl-divider"></div>
+        <div class="cl-footer">
+          <ul class="cl-options">
+            <li class="cl-item">
+              <span class="cl-mark"></span>
+              <span class="cl-text">Unlimited websites</span>
+            </li>
+            <li class="cl-item">
+              <span class="cl-mark"></span>
+              <span class="cl-text">100% data ownership</span>
+            </li>
+            <li class="cl-item">
+              <span class="cl-mark"></span>
+              <span class="cl-text">Email reports</span>
+            </li>
+          </ul>
+          <button class="cl-btn">Start my trail</button>
+        </div>
+      </div>
+    </div>
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.js"
+      integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      function initSlider(min, max, onChanged) {
+        const slider = $(".cl-slider");
+        const sliderContent = slider.find(".cl-content");
+        const sliderBtn = slider.find(".cl-slider-btn");
+        const sliderTrack = slider.find(".cl-track");
+        const sliderFilledTrack = slider.find(".cl-fill-track");
+        // mouse tracking variables
+        let holding = false;
+        // update holding
+        slider.mouseleave(function (e) {
+          holding = false;
+        });
+        sliderBtn.mousedown(function (e) {
+          holding = true;
+        });
+        slider.mouseup(function (e) {
+          holding = false;
+        });
+
+        // move track to new position when mouse moving within rect width
+        sliderContent.mousemove(function (e) {
+          const mouseX =
+            e.pageX - $(e.currentTarget).offset().left - sliderBtn.width() / 2;
+          update(mouseX);
+        });
+        // move track to new position when clicked on.
+        sliderTrack.click(function (e) {
+          const mouseX =
+            e.pageX - $(e.currentTarget).offset().left - sliderBtn.width() / 2;
+          update(mouseX);
+        });
+        function update(mouseX) {
+          if (
+            holding &&
+            mouseX > -(sliderBtn.width() / 2) &&
+            mouseX < sliderContent.width() - sliderBtn.width() / 2
+          ) {
+            sliderBtn.css("left", mouseX + "px");
+            sliderFilledTrack.css("width", mouseX + "px");
+            let result = 0;
+            if (mouseX > 0) {
+              result =
+                (mouseX / (sliderContent.width() - sliderBtn.width() / 2)) *
+                max;
+            }
+            onChanged(Math.ceil(result));
+          }
+        }
+      }
+      initSlider(100, 200, (result) => {
+        console.log(result);
+        $("#price").text("$" + result + ".00");
+      });
+    </script>
+  </body>
+</html>
