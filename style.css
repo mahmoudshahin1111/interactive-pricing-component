@@ -39,7 +39,7 @@ body * {
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-  background-image: url("../images/pattern-circles.svg");
+  background-image: url("https://mahmoudshahin1111.github.io/interactive-pricing-component/images/pattern-circles.svg");
   position: absolute;
 }
 .cl-page .cl-header .cl-header-text {
@@ -126,7 +126,7 @@ body * {
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  background-image: url("../images/icon-slider.svg");
+  background-image: url("https://mahmoudshahin1111.github.io/interactive-pricing-component/images/icon-slider.svg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: 60%;
@@ -241,7 +241,7 @@ body * {
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-  background-image: url("../images/icon-check.svg");
+  background-image: url("https://mahmoudshahin1111.github.io/interactive-pricing-component/images/icon-check.svg");
   margin-right: 1.4em;
 }
 .cl-page .cl-card .cl-footer .cl-btn {
