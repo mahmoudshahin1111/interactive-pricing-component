@@ -4,7 +4,7 @@
   "description": "![Design preview for the Interactive pricing component coding challenge](./design/desktop-preview.jpg)",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "serve": "sass ./styles/_layout.scss ./style.css --watch"
   },
   "author": "",
   "license": "ISC",

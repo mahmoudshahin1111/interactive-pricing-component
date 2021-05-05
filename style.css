@@ -3,7 +3,6 @@ html,
 body {
   font-family: "Manrope", sans-serif;
   font-size: 15px;
-  height: 100%;
   margin: 0;
 }
 html *,
@@ -16,31 +15,27 @@ body * {
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-bottom: calc(10vh + 2em);
 }
 .cl-page .cl-bg {
-  z-index: -1;
   position: fixed;
-  display: block;
-  width: 100%;
-  height: 40vh;
   top: 0;
   left: 0;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-image: url("../images/bg-pattern.svg");
+  width: 100%;
+  height: 50%;
 }
 .cl-page .cl-header {
-  height: 30vh;
   display: flex;
   flex-direction: column;
+  height: calc(30vh + 1em);
   align-items: center;
   position: relative;
   justify-content: center;
 }
 .cl-page .cl-header .cl-header-bg-pattern {
   display: block;
-  width: 80%;
-  height: 80%;
+  width: calc(50vw + 3em);
+  height: calc(15vh + 2em);
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -71,15 +66,16 @@ body * {
   display: flex;
   flex-direction: column;
   color: #858fad;
-  box-shadow: 0px 8px 5px 0px rgba(50, 50, 50, 0.29);
+  box-shadow: 0px 10px 28px 0px rgba(198, 198, 198, 0.28);
   background-color: white;
   z-index: 100;
   flex-basis: 1;
   padding: 20px 0;
   width: 85%;
   border-radius: 8px;
-  margin-bottom: 50px;
   user-select: none;
+  max-width: calc(600px + 2em);
+  max-height: calc(1000px + 2em);
 }
 .cl-page .cl-card .cl-body {
   padding: 20px;
@@ -90,7 +86,6 @@ body * {
   justify-content: center;
   font-weight: 800;
   text-transform: uppercase;
-  margin: 1em 0;
 }
 .cl-page .cl-card .cl-body .cl-slider {
   display: flex;
@@ -156,9 +151,6 @@ body * {
   font-weight: 800;
   color: #293356;
 }
-.cl-page .cl-card .cl-body .cl-price .cl-unit {
-  margin-left: 0.5em;
-}
 .cl-page .cl-card .cl-body .cl-options {
   display: flex;
   flex-direction: row;
@@ -204,9 +196,10 @@ body * {
   transform: translateX(100%);
 }
 .cl-page .cl-card .cl-body .cl-options .cl-monthly-billing-option .cl-percentage {
+  margin-left: 1em;
   background-color: #feece7;
   border-radius: 25px;
-  padding: 0.2rem 0.5rem;
+  padding: 0.5em 1em;
   font-size: 0.8em;
   color: #ff8c66;
 }
@@ -252,12 +245,77 @@ body * {
   margin-right: 1.4em;
 }
 .cl-page .cl-card .cl-footer .cl-btn {
-  padding: 12px 50px;
   background-color: #293356;
   color: #cdd7ee;
-  outline: 0;
   border-radius: 25px;
-  border: 0;
+  text-align: center;
+  word-wrap: normal;
+  word-break: keep-all;
+  width: calc(50% + 3em);
+  padding: 1em 0;
+  cursor: pointer;
+}
+.cl-page .cl-card .cl-footer .cl-btn:hover {
+  color: white;
+  transition: color 300ms ease;
+}
+
+@media (min-width: 800px) {
+  .cl-page {
+    font-size: 18px;
+  }
+  .cl-page .cl-card {
+    width: 50%;
+  }
+  .cl-page .cl-card .cl-upper-container {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 96%;
+    height: calc(30vh + 1em);
+    max-height: calc(200px + 2em);
+  }
+  .cl-page .cl-card .cl-upper-container .cl-pageviews {
+    display: flex;
+    order: 1;
+    margin: 0;
+    width: calc(35% + 1em);
+    height: 5em;
+    align-items: center;
+  }
+  .cl-page .cl-card .cl-upper-container .cl-price {
+    height: 5em;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    order: 2;
+    right: 0;
+    position: absolute;
+    margin: 0;
+    padding: 0;
+  }
+  .cl-page .cl-card .cl-upper-container .cl-price .cl-value {
+    font-size: 2.5em;
+    font-weight: 800;
+    color: #293356;
+  }
+  .cl-page .cl-card .cl-upper-container .cl-slider {
+    order: 3;
+  }
+
+  .cl-footer {
+    display: flex;
+    flex-direction: row !important;
+  }
+  .cl-footer .cl-options {
+    display: flex;
+    flex-direction: column;
+    align-items: unset !important;
+    margin-left: calc(10% + 1em);
+  }
+  .cl-footer .cl-btn {
+    margin-right: 2em;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */
