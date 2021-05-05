@@ -80,14 +80,14 @@
     crossorigin="anonymous"></script>
   <script>
     window.addEventListener('load', function () {
-      initSlider(100, 200, (result) => updatePrice());
+      initSlider(100, 200, (result) => updatePrice(result));
       reInitAfterWindowResize();
       listenToMonthlyBillingChange();
     })
 
     function reInitAfterWindowResize() {
       window.addEventListener('resize', function () {
-        initSlider(100, 200, (result) => updatePrice());
+        initSlider(100, 200, (result) => updatePrice(result));
       });
     }
     function listenToMonthlyBillingChange() {
@@ -150,7 +150,7 @@
       }
     }
 
-    function updatePrice() {
+    function updatePrice(result) {
       $("#price").text("$" + result + ".00");
     }
 
